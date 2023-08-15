@@ -34,7 +34,7 @@ body {
 
 }
 
-.corpo {
+.corpo_cima, .corpo_baixo {
     width: 100px;
     background-color: greenyellow;
     border-left: 2px solid black;
