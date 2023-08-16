@@ -1,8 +1,4 @@
 
-8° passo = fazer com que a barreira depois que saia da tela volte ao fundo
-
-9° passo = fazer com que a barreira que voltou ao fundo altere o ponto onde pode ser passado
-
 10° passo = criar uma function onde vai criar o passaro no meio da tela
 
 11° passo = criar o movimento de jump do passaro 
