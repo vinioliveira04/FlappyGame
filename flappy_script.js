@@ -81,13 +81,13 @@ function conjunto_barreiras(){
 
         //definindo distancia delas
         if (i == 1){
-            barreira.style.left = `650px`;
+            barreira.style.left = `320px`;
         } else if (i == 2) {
-            barreira.style.left = `1000px`;
+            barreira.style.left = `650px`;
         } else if (i == 3) {
-            barreira.style.left = `1350px`;
+            barreira.style.left = `970px`;
         } else if (i == 4) {
-            barreira.style.left = `1700px`;
+            barreira.style.left = `1300px`;
         }
         document.querySelector('.jogo').appendChild(barreira);
 
@@ -95,56 +95,45 @@ function conjunto_barreiras(){
         i++;
     }
 
-    //movimentando as barreiras
+    //movimentando todas as 4 barreiras e reiniciando elas com diferente buracos
     setInterval(() =>movimentar_barreira(barreira_list), 50);
-    //primeiro reset da primeira barreira
-    setTimeout(() => prieiro_reset_barreira(barreira_list[0]), 21500);
-    //primeiro reset da segunda barreira
-
-    //primeiro reset da terceira barreira
-
-    //primeiro reset da quarta barreira
-
-    // >=2 reset da primeira barreira
-
-    // >=2 reset da segunda barreira
-
-    // >=2 reset da terceira barreira
-
-    // >=2 reset da quarta barreira
-
 }
 
 
 //fazendo com que as barreiras se movimentem
-function movimentar_barreira(barreira){
+function movimentar_barreira(barreiras){
+    //quantos pixelselas vão se movimentar por determinado tempo
     const movimento = 2;
-    for (let i = 0; i < barreira.length; i++) {
-        let novaPosicao = parseInt(barreira[i].style.left) - movimento;
-        barreira[i].style.left = `${novaPosicao}px`;
-    }
-}
-
-
-//fazendo o primeiro reset do primeiro par de barreira
-function prieiro_reset_barreira(barreira){
-    //deixando a barreira invisivel
-    barreira.style.display = `none`;
-
-    //alterando o tamanho dela
-    const tamanho_min = 25;
-    let altura01 = Math.random() * (400 - tamanho_min);
-    let altura02 = 400 - altura01
-    altura01 += 25
-    altura02 += 25
-    barreira.querySelector('.corpo_cima').style.height = `${altura01}px`;
-    barreira.querySelector('.corpo_baixo').style.height = `${altura02}px`;
-
-    //voltando ela para o inicio
-    barreira.style.left = `1200px`;
     
-    //exibindo ela novamente na tela
-    barreira.style.display = `flex`
+    //fazendo todas se moverem atráves do for
+    for (let i = 0; i < barreiras.length; i++) {
+        let barreira = barreiras[i]; //selecionando a barreira atual do loop
+
+        //definindo e alterando nova posição da barreira
+        let novaPosicao = parseInt(barreira.style.left) - movimento;
+        barreira.style.left = `${novaPosicao}px`;
+
+        //verificar se ela já saiu da tela, caso já tenha saido da tela voltar do inicio
+        if (novaPosicao == -100){
+            //deixando a barreira invisivel
+            barreira.style.display = 'none';
+
+            //alterando o tamanho dela
+            const tamanho_min = 25;
+            let altura01 = Math.random() * (400 - tamanho_min);
+            let altura02 = 400 - altura01;
+            altura01 += 25;
+            altura02 += 25;
+            barreira.querySelector('.corpo_cima').style.height = `${altura01}px`;
+            barreira.querySelector('.corpo_baixo').style.height = `${altura02}px`;
+
+            //voltando ela para o inicio
+            barreira.style.left = '1200px';
+            
+            //exibindo ela novamente na tela
+            barreira.style.display = 'flex';
+        }
+    }
 }
 
 

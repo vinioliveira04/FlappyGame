@@ -29,13 +29,12 @@ body {
     justify-content: space-between;
     flex-direction: column;
     height: 100%;
-    width: 120px;
+    width: 100px;
     position: relative;
-
 }
 
 .corpo_cima, .corpo_baixo {
-    width: 100px;
+    width: 80px;
     background-color: greenyellow;
     border-left: 2px solid black;
     border-right: 2px solid black;
@@ -44,7 +43,7 @@ body {
 }
 
 .tampa {
-    width: 120px;
+    width: 100px;
     height: 40px;
     background-color: greenyellow;
     border: 2px solid black;
@@ -55,7 +54,7 @@ body {
     width: 60px;
     position: absolute;
     top: calc(50% - 30px);
-    left: 30%;
+    left: 15%;
 }
 
 .passaro img {
