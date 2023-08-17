@@ -103,7 +103,7 @@ function conjunto_barreiras(){
 //fazendo com que as barreiras se movimentem
 function movimentar_barreira(barreiras){
     //quantos pixelselas vão se movimentar por determinado tempo
-    const movimento = 2;
+    const movimento = 4;
     
     //fazendo todas se moverem atráves do for
     for (let i = 0; i < barreiras.length; i++) {
@@ -114,7 +114,7 @@ function movimentar_barreira(barreiras){
         barreira.style.left = `${novaPosicao}px`;
 
         //verificar se ela já saiu da tela, caso já tenha saido da tela voltar do inicio
-        if (novaPosicao == -100){
+        if (novaPosicao <= -98){
             //deixando a barreira invisivel
             barreira.style.display = 'none';
 
@@ -137,9 +137,46 @@ function movimentar_barreira(barreiras){
 }
 
 
+//Fazendo aparecer o passaro na tela
+function passaro(){
+    //selecionando a div em que ele vai ficar
+    const div_passaro = document.querySelector('.passaro')
+    //criando o elemento imagem
+    const img_passaro = document.createElement('img');
+    //adicionando o caminho do arquvio da imagem do passaro
+    img_passaro.src = './passaro.png';
+    //adicionando o passar na div dele, fazendo com que ele fique visível
+    div_passaro.appendChild(img_passaro);
+}
+
+
+//movimento de jump do passaro
+function voar() {
+    // altura de pixels que ele voa ao pressionar a tecla
+    const movimento = 8;
+    //selecionando a div em que está o passaro
+    const div_passaro = document.querySelector('.passaro');
+    const top = div_passaro.style.margin;
+    let altura = top + movimento;
+    //adicionando a nova posição ao elemento
+    div_passaro.style.margin = `${altura}px`;
+}
+
+
+
 //dando play no jogo
 function play(){
     conjunto_barreiras();
+    passaro();
+
+    document.addEventListener("keydown", (evt) => {
+        evt = evt || window.event;
+        var key = evt.key;
+
+        if (key == "ArrowUp" || key == " ") {
+            voar();
+        }
+    });
 }
 
 play();

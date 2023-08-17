@@ -1,6 +1,3 @@
-
-10° passo = criar uma function onde vai criar o passaro no meio da tela
-
 11° passo = criar o movimento de jump do passaro 
 
 12° passo = criar o movimento de queda do passaro
