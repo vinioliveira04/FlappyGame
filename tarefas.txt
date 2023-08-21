@@ -1,8 +1,3 @@
-11° passo = criar o movimento de jump do passaro 
-
-12° passo = criar o movimento de queda do passaro
-
-13° passo = estabelecer limite superior e inferior do passaro para que não ultrapasse a tela
 
 14° passo = verificar colisões laterias
 
