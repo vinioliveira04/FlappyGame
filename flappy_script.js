@@ -133,8 +133,6 @@ function voar() {
     const div_passaro = document.querySelector('.passaro');
     let atual_altura = div_passaro.offsetTop;
 
-    console.log(atual_altura)
-
     if(atual_altura <= 20){
 
     }else {
@@ -173,6 +171,32 @@ function mover_baixo(){
 }
 
 
+//verificar colisão das barreiras inferiores
+function colidiu() {
+    const barreiras = document.querySelectorAll('.par_de_barreiras');
+    const passaro = document.querySelector('.passaro');
+    
+    const passaroTop = parseInt(passaro.style.top);
+    const passaroBottom = passaroTop + passaro.offsetHeight;
+    const passaroLeft = parseInt(passaro.style.left);
+    const passaroRight = passaroLeft + passaro.offsetWidth;
+
+    for (let i = 0; i < barreiras.length; i++) {
+        const barreira = barreiras[i];
+        const barreiraTop = barreira.offsetTop;
+        const barreiraBottom = barreiraTop + barreira.offsetHeight;
+        const barreiraLeft = parseInt(barreira.style.left);
+        const barreiraRight = barreiraLeft + barreira.offsetWidth;
+
+        if (passaroBottom >= barreiraTop && passaroTop <= barreiraBottom &&
+            passaroRight >= barreiraLeft && passaroLeft <= barreiraRight) {
+            console.log('colidiu!!');
+        } else {
+            console.log('OK!');
+        }
+    }
+}
+
 //dando play no jogo
 function play(){
     conjunto_barreiras();
@@ -185,6 +209,8 @@ function play(){
 
         if (key == "ArrowUp" || key == " ") {voar();}
     });
+
+    setInterval(colidiu, 100)
 }
 
 play();
