@@ -133,15 +133,20 @@ function voar() {
     const div_passaro = document.querySelector('.passaro');
     let atual_altura = div_passaro.offsetTop;
 
-    if (!voando){
-        voando = true;
-        let altura = atual_altura - movimento;
-        div_passaro.style.top = `${altura}px`;
+    console.log(atual_altura)
 
-        setInterval(() => {
-            voando = false;
-        }, 100);
-    }
+    if(atual_altura <= 20){
+
+    }else {
+        if (!voando){
+            voando = true;
+            let altura = atual_altura - movimento;
+            div_passaro.style.top = `${altura}px`;
+
+            setInterval(() => {
+                voando = false;
+            }, 100);
+        }}
 }
 
 //descendo o pássaro quando não pressionar nenhuma tecla
@@ -153,14 +158,18 @@ function descendo_automatico(){
     }, 50);
 }
 
-//fazendo com que o pássaro se movimente
+//fazendo com que o pássaro se movimente para baixo
 function mover_baixo(){
     const div_passaro = document.querySelector('.passaro');
     let altura = div_passaro.offsetTop;
     const descer = 6;
+    if (altura >= 630){
 
-    nova_altura = altura + descer;
-    div_passaro.style.top = `${nova_altura}px`
+    } else {
+        nova_altura = altura + descer;
+        div_passaro.style.top = `${nova_altura}px`
+    }
+
 }
 
 
