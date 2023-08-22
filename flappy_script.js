@@ -126,6 +126,7 @@ function passaro(){
 //deixar como pré definido que o pássaro não está voando
 let voando = false;
 
+
 //movimento de jump do passaro
 function voar() {
     const movimento = 30;
@@ -146,6 +147,7 @@ function voar() {
             }, 100);
         }}
 }
+
 
 //descendo o pássaro quando não pressionar nenhuma tecla
 function descendo_automatico(){
@@ -173,7 +175,7 @@ function mover_baixo(){
 
 //verificar colisão das barreiras inferiores
 function colidiu() {
-    const barreiras = document.querySelectorAll('.par_de_barreiras');
+    const barreira_baixa = document.querySelectorAll('.corpo_baixo');
     const passaro = document.querySelector('.passaro');
     
     const passaroTop = parseInt(passaro.style.top);
@@ -181,21 +183,46 @@ function colidiu() {
     const passaroLeft = parseInt(passaro.style.left);
     const passaroRight = passaroLeft + passaro.offsetWidth;
 
-    for (let i = 0; i < barreiras.length; i++) {
-        const barreira = barreiras[i];
+    for (let i = 0; i < barreira_baixa.length; i++) {
+        const barreira = barreira_baixa[i];
         const barreiraTop = barreira.offsetTop;
         const barreiraBottom = barreiraTop + barreira.offsetHeight;
-        const barreiraLeft = parseInt(barreira.style.left);
-        const barreiraRight = barreiraLeft + barreira.offsetWidth;
+        const barreiraLeft = barreira.getBoundingClientRect().left;
+        const barreiraRight = barreiraLeft + 100;
+        console.log(barreiraLeft);
+        console.log(barreiraRight);
 
-        if (passaroBottom >= barreiraTop && passaroTop <= barreiraBottom &&
-            passaroRight >= barreiraLeft && passaroLeft <= barreiraRight) {
+        const colidiuTopo = passaroBottom >= barreiraTop;
+        const colidiuEsquerda = passaroRight >= barreiraLeft;
+        const colidiuDireita = passaroLeft <= barreiraRight;
+
+        if (colidiuTopo && colidiuEsquerda && colidiuDireita) {
+            limparTela();
             console.log('colidiu!!');
-        } else {
-            console.log('OK!');
+            return; // Saia do loop se houve colisão
         }
     }
 }
+
+
+//tirando elementos da tela
+function limparTela() {
+    const passaro = document.querySelector('.passaro');
+    const barreiras = document.querySelectorAll('.par_de_barreiras');
+
+    passaro.remove();
+
+    barreiras.forEach(barreira => {
+        barreira.remove();
+    });
+}
+
+
+//adicionando game over na tela
+function game_over(){
+
+}
+
 
 //dando play no jogo
 function play(){
@@ -210,7 +237,7 @@ function play(){
         if (key == "ArrowUp" || key == " ") {voar();}
     });
 
-    setInterval(colidiu, 100)
+    setInterval(colidiu, 50)
 }
 
 play();
