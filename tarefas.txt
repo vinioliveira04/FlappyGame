@@ -1,6 +1,0 @@
-
-14° passo = verificar colisões laterias
-
-15° passo = verificar colisões verticais
-
-16° passo = adicionar um elemento no canto superio direito da tela onde faz a contagem de pontos da partida
