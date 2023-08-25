@@ -1,0 +1,66 @@
+* {
+    box-sizing: border-box;
+}
+
+.conteudo {
+    align-items: center;
+    text-align: center;
+    background-color: darkslateblue;
+}
+
+.jogo {
+    position: relative;
+    border: 5px solid dodgerblue;
+    height: 700px;
+    width: 1200px;
+    margin: auto;
+    margin-top: 30px;
+    background-color: deepskyblue;
+    overflow: hidden;
+}
+
+.passaro {
+    position: absolute;
+    width: 60px;
+    left: calc(50% - 30px);
+}
+
+.par_de_barreiras {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.barreira {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.barreira .borda {
+    height: 30px;
+    width: 130px;
+    background: linear-gradient(90deg, #639301, #a5e82e);
+    border: 2px solid black;
+}
+
+.barreira .corpo {
+    height: 150px;
+    width: 110px;
+    background: linear-gradient(90deg, #639301, #a5e82e);
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+}
+
+.progresso {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 70px;
+    z-index: 50;
+    font-family: 'Wonder Boy In Monster World', sans-serif;
+    color: white;
+}
